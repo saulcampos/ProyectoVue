@@ -1,0 +1,98 @@
+@extends('layouts.adminlte')
+
+
+@section('head')
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
+
+<meta name="token" id="token" value="{{ csrf_token() }}">
+
+<script src="{{asset('js/vue.min.js')}}"></script>
+<script src="{{asset('js/vue-resource.min.js')}}"></script>
+@endsection
+
+
+
+@include('empresa.administrador.menuLat')
+
+
+
+
+@section('buscar')
+
+@endsection
+
+
+@section('contenido')
+ 
+
+<!-- v-on:mouseEnter="CalcularStock()" -->
+
+<div class="container">
+	<div id="apiProductos">
+<br>
+	 <ul class="nav nav-tabs">
+           <li class="active"><a data-toggle="tab" href="#home">Activos</a></li>
+           <li><a data-toggle="tab" href="#menu2">Desactivados</a></li>
+           <li><a data-toggle="tab" href="#menu3">Stock´s</a></li> 
+           <li v-on:mouseEnter="CalcularStock()" v-on:click.once="granTotal()"><a data-toggle="tab" href="#menu4" >Compras de stock</a></li>   
+         </ul>
+
+ 	<div class="tab-content">
+ 		<template>
+    		<div id="home" class="tab-pane fade in active">
+        		 <h3>productos activos</h3>
+      	    		<div class="form-row">
+          			@include('empresa.administrador.productos.tabs.tab1')
+        		</div>
+    		</div>
+    	</template>
+
+    	<template>
+    		<div id="menu2" class="tab-pane fade">
+         		<h3>productos desactivados</h3>
+      	    		<div class="form-row">
+          			@include('empresa.administrador.productos.tabs.tab2')
+               		
+        		</div>
+    		</div>
+    	</template>
+
+      <template>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Estado del stock</h3>
+                <div class="form-row">
+                @include('empresa.administrador.productos.tabs.tab3')
+                  
+            </div>
+        </div>
+      </template>
+      <template>
+        <div id="menu4" class="tab-pane fade">
+            <h3>Compras de stock</h3>
+                <div class="form-row">
+                @include('empresa.administrador.productos.tabs.tab4')
+                  
+            </div>
+        </div>
+      </template>
+
+ 	</div>
+
+
+
+
+
+
+
+     </div>
+</div> 	{{-- Fin del VUE --}}
+
+
+<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/Vue/moment-with-locales.min.js')}}"></script>
+<script src="{{asset('js/Vue/adminitrador/productos.js')}}"></script>
+@endsection
+<input type="hidden" name="route" value="{{url('/')}}">
+

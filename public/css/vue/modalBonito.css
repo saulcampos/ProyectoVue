@@ -1,0 +1,11 @@
+#cart {
+        background: url('../../adminlte/img/photo1.png') center center;
+ }
+
+ <style type="text/css">
+  thead, tbody{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+  },
+  .container button{ text-transform:uppercase; }
